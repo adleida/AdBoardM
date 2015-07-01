@@ -5,26 +5,11 @@ var passport = require("passport");
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   if(req.user){
-      var dao = req.app.get("dao");
-      dao.get("users", {
-          _id : req.user
-      }, function(error, docs){
-          if(error){
-              res.render("error", {error : "未知错误"});
-          }else{
-              if(docs.length == 0){
-                  res.render("error", {error : "未知错误"});
-              }else{
-                  var name = docs[0].username;
-                  delete docs[0].password;
-                  res.render("user", {
-                      user : docs[0]
-                  });
-              }
-          }
+      res.render("user", {
+          user : req.user
       });
   }else{
-      req.redirect("/");
+      res.redirect("/");
   }
 });
 
@@ -58,8 +43,9 @@ router.post('/register', function(req, res, next){
                         if(docs.length == 0){
                             res.render("error", {error : "未知错误"});
                         }else{
-                            req.login(docs[0]._id);
-                            req.redirect("/users/")
+                            delete docs[0].password;
+                            req.login(docs[0]);
+                            res.redirect("/users/")
                         }
                     }
                 });

@@ -27,6 +27,7 @@ app.use(session({secret: "lkiversonlk"}));
 var passport = require("passport"), LocalStrategy = require("passport-local").Strategy;
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
@@ -91,11 +92,6 @@ try{
     process.exit(1);
 }
 
-
-
-
-
-
 passport.use(new LocalStrategy(
     {
         usernameField : "username",
@@ -114,7 +110,8 @@ passport.use(new LocalStrategy(
                if(docs.length == 0){
                    done(null, false, {message : "incorrect password or non-existed usernmae"});
                }else{
-                   done(null, docs[0]._id);
+                   delete docs[0].password;
+                   done(null, docs[0]);
                }
            }
         });

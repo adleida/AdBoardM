@@ -3,7 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: '投放管理系统' });
+    if(req.user){
+        res.redirect("/users/");
+    }else{
+        res.render('index', { title: '投放管理系统' });
+    }
 });
 
 module.exports = router;
