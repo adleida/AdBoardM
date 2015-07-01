@@ -1,5 +1,37 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    link(rel='stylesheet', href="/stylesheets/index.css")
+
+    div.background(style="min-height:400px")
+        div(style="width:100%;height:100%;position:absolute")
+
+        div.panel.panel-primary(style="float:right; margin-right:10px;width:400px")
+            div.panel-heading
+                h3.panel-title
+                    | 请登录
+            div.panel-body
+                div.row
+                    div.col-md-5
+                        a
+                        a
+                        a
+                    div.col-md-7
+                        form.form-horizontal(action="/users/login", method="post")
+                            fieldset
+                                input#username.form-control.input-md(name="username",placeholder="请输入账户名", type="text")
+                                input#password.form-control.input-md(name="password", placeholder="请输入密码", type="password")
+                                div.spacing
+                                    a
+                                        small
+                                            | 忘记密码?
+                                    br
+                                button#login.btn.btn-primary.pull-right(type="submit")
+                                    | 登录
+                                a#signup.btn.btn-danger.pull-right(href="/users/signup")
+                                    | 注册
+    div.footer
+        | 北京朝阳
+
+    script(src="/javascripts/index.js")
+

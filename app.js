@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var session = require("express-session");
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -21,6 +21,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: "lkiversonlk"}));
+
+
+var passport = require("passport"), LocalStrategy = require("passport-local").Strategy;
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
+
 
 app.use('/', routes);
 app.use('/users', users);
@@ -55,6 +69,57 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+var yaml = require("js-yaml");
+var fs = require("fs")
+var winston = require("winston");
+var config;
+try{
+    config = yaml.safeLoad(fs.readFileSync("config.yaml", "utf-8"));
+}catch(e){
+    winston.log("error", "fail to load config.yaml, please confirm the configuration file is correct", e);
+    process.exit(1);
+}
+
+var Dao = require("./src/dao/adapter").Dao;
+
+try{
+    var dao = new Dao(config.database);
+    app.set("dao", dao);
+}catch(e){
+    winston.log("error", "fail to connect to database " + config.database, e);
+    process.exit(1);
+}
+
+
+
+
+
+
+passport.use(new LocalStrategy(
+    {
+        usernameField : "username",
+        passwordField : "password"
+    } ,
+    function(user, passwd, done){
+        var dao = app.get("dao");
+        dao.get("users", {
+            username: user,
+            password : passwd
+        }, function(error, docs){
+           if(error){
+               winston.log("error", "fail to search users database", e)
+               done(null, false, {message : "fail"});
+           }else{
+               if(docs.length == 0){
+                   done(null, false, {message : "incorrect password or non-existed usernmae"});
+               }else{
+                   done(null, docs[0]._id);
+               }
+           }
+        });
+    }
+));
 
 
 module.exports = app;

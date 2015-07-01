@@ -1,7 +1,17 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+        script(src='http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
+        title= title
+    body
+        div.navbar.navbar-default
+            div.container
+                span.brand(style="line-height:50px")
+                    | AdLeida
+                nav.collapse.navbar-collapse.nav(style="float:right")
+                    | 欢迎来到AD雷达互动广告投放管理系统
     block content

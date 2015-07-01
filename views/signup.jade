@@ -1,0 +1,12 @@
+//
+   Created by kliu on 01/07/2015.
+
+extends layout
+
+block content
+    form(action="/users/register", method="post")
+        input#username(name="username",type="text")
+        input#password(name="password", type="password")
+        button(type="submit")
+            | 确认
+
