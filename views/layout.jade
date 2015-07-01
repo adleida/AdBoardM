@@ -4,14 +4,71 @@ html
         meta(charset='UTF-8')
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
         link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/layout.css')
         script(src='http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
         title= title
     body
         div.navbar.navbar-default
             div.container
-                span.brand(style="line-height:50px")
-                    | AdLeida
-                nav.collapse.navbar-collapse.nav(style="float:right")
-                    | 欢迎来到AD雷达互动广告投放管理系统
-    block content
+                a(href="/")
+                    span.navbar-brand
+                        | AdLeida
+                div.collapse.navbar-collapse
+                    ul.nav.navbar-nav.navbar-right
+                        li.dropdown
+                            a.dropdown-toggle(data-toggle="dropdown", role="button", aria-haspopup="true",aria-expanded="false")
+                                if user
+                                    | #{user.username}
+                                else
+                                    | 未登录
+                            if user
+                                ul.dropdown-menu
+                                    li
+                                        a
+                                            | 个人信息
+                                    li
+                                        a
+                                            | 开始投放
+                                    li
+                                        a
+                                            | 已有投放
+                                    li.divider(role="separator")
+                                    li
+                                        a(href="/users/signout")
+                                            | 注销
+    div(style="min-height:600px")
+        block content
+
+    footer.footer-distributed
+        div.footer-left
+            h3
+                | AD雷达
+            p.footer-links
+
+        div.footer-center
+            div
+                i
+                p
+                    span
+                        | 常营，首开东都汇
+                    span
+                        | 北京，朝阳
+            div
+                i
+                p
+                    | +010..
+
+            div
+                i
+                p
+                    | hr@adleida.com
+
+        div.footer-right
+
+            p.footer-company-about
+                span
+                    | 关于我们
+                |我们是一家互联网广告领域的创业公司
+
+

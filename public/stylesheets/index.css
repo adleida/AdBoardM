@@ -1,0 +1,16 @@
+.main-frame{
+    height:600px;
+}
+
+.main-frame .back-ground{
+    height:600px;
+    width:100%;
+    position:absolute;
+}
+
+.main-frame .login-form{
+    margin-top:20px;
+    right:20px;
+    width:400px;
+    position:absolute;
+}

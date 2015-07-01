@@ -43,9 +43,7 @@ router.post('/register', function(req, res, next){
                         if(docs.length == 0){
                             res.render("error", {error : "未知错误"});
                         }else{
-                            delete docs[0].password;
-                            req.login(docs[0]);
-                            res.redirect("/users/")
+                            res.redirect("/")
                         }
                     }
                 });
@@ -54,6 +52,15 @@ router.post('/register', function(req, res, next){
             }
         }
     });
+});
+
+router.get("/signout", function(req, res, next){
+    if(req.user){
+        req.logout();
+        res.redirect("/");
+    }else{
+        res.redirect("/");
+    }
 });
 
 module.exports = router;

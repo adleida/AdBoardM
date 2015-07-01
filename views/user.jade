@@ -4,5 +4,8 @@
 extends layout
 
 block content
-    div
-        | 你好 #{user.username}
+    link(rel='stylesheet', href='/stylesheets/user.css')
+    script(src='/javascripts/user.js')
+
+    div.container
+        div.row
