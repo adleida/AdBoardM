@@ -1,0 +1,15 @@
+.user-header{
+    height: 80px;
+}
+
+.user-header .class-icon{
+    line-height:60px;
+    font-size:40px;
+    float:left
+}
+
+.user-header .stat-span{
+    margin-top:10px;
+    margin-left:20px;
+    float:left;
+}
