@@ -12,12 +12,14 @@ router.get('/', function(req, res, next) {
               user : function(callback){
                   dao.get("users", {id : req.user}, callback);
               },//get the user info
-
               balance : function(callback){
                   dao.rest("/balance", {id : req.user}, callback)
               },//get the balance info
               creatives : function(callback){
                   dao.rest("/creatives", {id : req.user}, callback)
+              },//get the creatives count on showing
+              messages : function(callback){
+                  dao.rest("/messages", {id : req.user}, callback);
               }
           },//get the creatives info
           function(err, results){
@@ -30,7 +32,8 @@ router.get('/', function(req, res, next) {
                       res.render("user", {
                           user : results.user[0],
                           balance : results.balance,
-                          creatives : results.creatives
+                          creatives : results.creatives,
+                          messages : results.messages
                       });
                   }
               }

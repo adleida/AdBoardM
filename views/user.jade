@@ -87,10 +87,22 @@ block content
                                                     div.col-md-4.col-sm-4.col-xs-12
                                                         button#submit_basic.btn.btn-primary.form-control(type="submit",style="display:none")
                                                             | 提交
-
                     div#message-box.tab-pane
                         div.row
                             ul.messages-list
+                                each message in messages
+                                    li(class=(message.seen?'':"unread"), data-toggle="collapse", data-target="##{message.id}")
+                                        div.message-header
+                                            span.message-from
+                                                | #{message.from}
+                                            span.message-date
+                                                | #{message.date}
+                                        div.message-title
+                                            | #{message.title}
+                                        div.message-body.collapse(id=message.id)
+                                            | #{message.body}
+
+                            //div
                                 li.unread(data-toggle="collapse", data-target="#body1")
                                     div.message-header
                                         span.message-from
