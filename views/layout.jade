@@ -19,13 +19,16 @@ html
                         li.dropdown
                             a.dropdown-toggle(data-toggle="dropdown", role="button", aria-haspopup="true",aria-expanded="false")
                                 if user
-                                    | #{user.username}
+                                    if user.nickname
+                                        | #{user.nickname}
+                                    else
+                                        | 请设置名称
                                 else
                                     | 未登录
                             if user
                                 ul.dropdown-menu
                                     li
-                                        a
+                                        a(href="/users/")
                                             | 个人信息
                                     li
                                         a

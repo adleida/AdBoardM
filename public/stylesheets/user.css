@@ -13,3 +13,46 @@
     margin-left:20px;
     float:left;
 }
+
+.messages-list{
+    list-style: none;
+}
+
+li .message-header{
+    font-size : 18px;
+}
+
+li .message-body{
+    font-size : 14px;
+    margin: 10px;
+}
+
+li.unread .message-header{
+    font-weight : bold;
+}
+
+li.unread .message-title{
+    font-weight : bold;
+}
+
+.messages-list .message-date{
+    float:right;
+    text-align: right;
+}
+
+.messages-list li{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom : 1px solid #e1e6ef;
+}
+
+.messages-list li:hover{
+    background: #f2f4f8;
+    border: 1px solid #e1e6ef;
+    padding: 9px;
+}
+
+.messages-list li:hover{
+    text-decoration: none;
+    cursor: pointer;
+}

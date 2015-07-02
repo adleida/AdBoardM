@@ -98,7 +98,7 @@ passport.use(new LocalStrategy(
     } ,
     function(user, passwd, done){
         var dao = app.get("dao");
-        dao.get("users", {
+        dao.get("logins", {
             username: user,
             password : passwd
         }, function(error, docs){
@@ -109,8 +109,28 @@ passport.use(new LocalStrategy(
                if(docs.length == 0){
                    done(null, false, {message : "incorrect password or non-existed usernmae"});
                }else{
-                   delete docs[0].password;
-                   done(null, docs[0]);
+                   var user_id = docs[0]._id;
+                   dao.get("users", {
+                       id : user_id
+                   }, function(error,docs){
+                       if(error){
+                           done(null, false, {message : "fail to load user information"});
+                       }else{
+                           if(docs.length == 0){
+                               dao.add("users", {
+                                   id : user_id
+                               }, function(error, docs){
+                                   if(error){
+                                       done(null, false, {message : "fail to add new user"});
+                                   }else{
+                                       done(null, docs[0].id);
+                                   }
+                               });
+                           }else{
+                               done(null, docs[0].id);
+                           }
+                       }
+                   });
                }
            }
         });

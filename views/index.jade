@@ -5,25 +5,26 @@ block content
     div.main-frame
         div.back-ground
             img(style="width:100%;height:100%", src="/images/front-page-background.jpg")
-        div.login-form.panel.panel-default
-            div.panel-body
-                div.row
-                    div.col-md-5
-                        a
-                        a
-                        a
-                    div.col-md-7
-                        form.form-horizontal(action="/users/login", method="post")
-                            fieldset
-                                input#username.form-control.input-md(name="username",placeholder="请输入账户名", type="text")
-                                input#password.form-control.input-md(name="password", placeholder="请输入密码", type="password")
-                                div.spacing
-                                    a
-                                        small
-                                            | 忘记密码?
-                                button#login.btn.btn-primary.col-md-5.col-xs-5.form-control(type="submit")
-                                    | 登录
-                                a#signup.btn.btn-danger.col-md-5.col-xs-5.form-control(href="/users/signup")
-                                    | 注册
+        if !user
+            div.login-form.panel.panel-default
+                div.panel-body
+                    div.row
+                        div.col-md-5
+                            a
+                            a
+                            a
+                        div.col-md-7
+                            form.form-horizontal(action="/users/login", method="post")
+                                fieldset
+                                    input#username.form-control.input-md(name="username",placeholder="请输入账户名", type="text")
+                                    input#password.form-control.input-md(name="password", placeholder="请输入密码", type="password")
+                                    div.spacing
+                                        a
+                                            small
+                                                | 忘记密码?
+                                    button#login.btn.btn-primary.col-md-5.col-xs-5.form-control(type="submit")
+                                        | 登录
+                                    a#signup.btn.btn-danger.col-md-5.col-xs-5.form-control(href="/users/signup")
+                                        | 注册
     script(src="/javascripts/index.js")
 
