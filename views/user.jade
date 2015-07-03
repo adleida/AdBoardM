@@ -124,6 +124,73 @@ block content
                                     div.message-body.collapse
                                         | 物料编号2342342，已经通过审核
                     div#balance-box.tab-pane
-                        | 账户信息
+                        div.row
+                            div.col-md-3.col-sm-4.col-xs-12
+                                div.panel.panel-default.well
+                                    div.current-balance
+                                        | 目前余额 23434
+                                    div.yesterday-cost
+                                        | 昨日广告费 2342
+                                    div.month-cost
+                                        | 本月广告费 2342
+                            div.col-md-9.col-sm-8.col-xs-12
+                                //canvas#cost-chart(style="height:440px; width:100%")
 
+                        div.history-billing.row
+                            div.col-md-12
+                                div.panel.panel-default
+                                    div.panel-heading
+                                        h3.text-center
+                                            strong
+                                                | 账户历史
+                                    div.panel-body
+                                        div.table-responsive
+                                            table.table.table-condensed
+                                                thead
+                                                    tr
+                                                        td
+                                                            strong
+                                                                | 交易类型
+                                                        td
+                                                            strong
+                                                                | 详细
+                                                        td
+                                                            strong
+                                                                | 费用
+                                                        td
+                                                            strong
+                                                                | 结余
+                                                tbody
+                                                    tr
+                                                        td
+                                                            | TEst
+                                                        td
+                                                            | FSFD
+                                                        td
+                                                            | asd
+                                                        td
+                                                            | asd
+                                                    tr
+                                                        td
+                                                            | TEst
+                                                        td
+                                                            | FSFD
+                                                        td
+                                                            | asd
+                                                        td
+                                                            | asd
+                                                    tr
+                                                        td
+                                                            | TEst
+                                                        td
+                                                            | FSFD
+                                                        td
+                                                            | asd
+                                                        td
+                                                            | asd
+
+
+
+    //script(src='/javascripts/lib/globalize.min.js')
+    //script(src='/javascripts/lib/dx.chartjs.js')
     script(src='/javascripts/user.js')

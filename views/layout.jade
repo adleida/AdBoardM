@@ -7,7 +7,7 @@ html
         link(rel='stylesheet', href='/stylesheets/layout.css')
         script(src='http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
-        title= title
+        title= "Ad雷达户外投放系统"
     body
         div.navbar.navbar-default
             div.container
@@ -16,6 +16,9 @@ html
                         | AdLeida
                 div.collapse.navbar-collapse
                     ul.nav.navbar-nav.navbar-right
+                        li
+                            a
+                                | 投放资源
                         li.dropdown
                             a.dropdown-toggle(data-toggle="dropdown", role="button", aria-haspopup="true",aria-expanded="false")
                                 if user
@@ -31,11 +34,11 @@ html
                                         a(href="/users/")
                                             | 个人信息
                                     li
-                                        a
-                                            | 开始投放
+                                        a(href="/puttings/")
+                                            | 投放管理
                                     li
-                                        a
-                                            | 已有投放
+                                        a(href="/assets")
+                                            | 账户充值
                                     li.divider(role="separator")
                                     li
                                         a(href="/users/signout")
