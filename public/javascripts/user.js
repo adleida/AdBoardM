@@ -7,3 +7,8 @@ $("#modify_basic").on('click', function(){
     $("#basic textarea").attr("disabled", false);
     $("#basic button").show();
 });
+
+$("#message-box .messages-list li").on('click', function(){
+    $(this).removeClass("unread");
+});
+
