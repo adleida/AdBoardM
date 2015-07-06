@@ -86,6 +86,10 @@ var fakeMessages = [
     }
 ];
 
+var fakeScreens = [
+
+];
+
 Dao.prototype.rest = function(path, params, callback){
     var self = this;
     switch (path) {
@@ -97,6 +101,9 @@ Dao.prototype.rest = function(path, params, callback){
             break;
         case "/messages":
             callback(null, fakeMessages);
+            break;
+        case "/screens":
+            callback(null, fakeScreens);
             break;
         default :
             callback({});

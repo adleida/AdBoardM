@@ -21,7 +21,7 @@ var utils = {
                 }
             });
         }else{
-            res.render("error", {message : "请先登录"});
+            next();
         }
     }
 };

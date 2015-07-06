@@ -17,8 +17,8 @@ html
                 div.collapse.navbar-collapse
                     ul.nav.navbar-nav.navbar-right
                         li
-                            a
-                                | 投放资源
+                            a(href="/screens")
+                                | 互动屏总览
                         li.dropdown
                             a.dropdown-toggle(data-toggle="dropdown", role="button", aria-haspopup="true",aria-expanded="false")
                                 if user
@@ -43,6 +43,11 @@ html
                                     li
                                         a(href="/users/signout")
                                             | 注销
+                            else
+                                ul.dropdown-menu
+                                    li
+                                        a(href="/")
+                                            | 登录
     div(style="min-height:600px")
         block content
 
